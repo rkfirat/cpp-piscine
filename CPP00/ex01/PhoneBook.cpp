@@ -1,7 +1,8 @@
-#include <PhoneBook.hpp>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
 {
+
 }
 
 PhoneBook::~PhoneBook()
@@ -9,13 +10,17 @@ PhoneBook::~PhoneBook()
 
 }
 
-
-Contact::Contact()
+int	PhoneBook::getNbContact() const
 {
-
+    return this->_nbContact;
 }
 
-Contact::~Contact()
+void PhoneBook::start()
 {
+    std::string input;
 
+    while (true)
+    {
+        getline(std::cin, input);
+    }
 }
