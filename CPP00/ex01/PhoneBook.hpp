@@ -12,6 +12,8 @@ public:
 	PhoneBook();
 	~PhoneBook();
 	int	getNbContact() const;
+	void addContact();
 	void start();
+	void addContact(Contact newContanct);
 };
 
