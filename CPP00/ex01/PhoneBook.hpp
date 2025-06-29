@@ -1,7 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include "Contact.hpp"
+#include "String.hpp"
 
 class PhoneBook
 {
