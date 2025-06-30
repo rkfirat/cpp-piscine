@@ -3,6 +3,7 @@
 
 Zombie::Zombie(std::string name) : name(name)
 {
+    std::cout << this->name << " is created!" << std::endl;
 
 }
 
