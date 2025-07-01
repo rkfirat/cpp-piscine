@@ -1,5 +1,5 @@
 #include "PhoneBook.hpp"
-#include "String.hpp"
+#include <cstdlib>
 
 PhoneBook::PhoneBook() : _nbContact(0) {}
 
@@ -29,59 +29,78 @@ void PhoneBook::start() {
 
     printHeader();
     while (true) {
+        input.clear();
+        std::cin.clear();
         std::cout << "\n\033[1;33mWhat do you want:\033[0m ";
         std::getline(std::cin, input);
         input = strToUpper(input);
 
+        if (input.empty())
+            continue;
         if (std::cin.eof()) {
+            input.clear();
+            std::cin.clear();
             printGoodbye();
             break;
         }
 
         if (input == "ADD") {
+            std::string tmpContact;
             Contact tmp;
 
             std::cout << "First Name: ";
-            std::getline(std::cin, input);
+            std::getline(std::cin, tmpContact);
             if (std::cin.eof())
             {
+                tmpContact.clear();
+                std::cin.clear();
                 return printGoodbye();
             }
-            tmp.setFirstName(input);
+            tmp.setFirstName(tmpContact);
             std::cout << "Last Name: ";
-            std::getline(std::cin, input);
+            std::getline(std::cin, tmpContact);
             if (std::cin.eof())
             {
+                tmpContact.clear();
+                std::cin.clear();
                 return printGoodbye();
             }
-            tmp.setLastName(input);
+            tmp.setLastName(tmpContact);
             std::cout << "Nick Name: ";
-            std::getline(std::cin, input);
+            std::getline(std::cin, tmpContact);
             if (std::cin.eof())
             {
+                tmpContact.clear();
+                std::cin.clear();
                 return printGoodbye();
             }
-            tmp.setNickName(input);
+            tmp.setNickName(tmpContact);
             std::cout << "Phone Number: ";
-            std::getline(std::cin, input);
+            std::getline(std::cin, tmpContact);
             if (std::cin.eof())
             {
+                tmpContact.clear();
+                std::cin.clear();
                 return printGoodbye();
             }
-            tmp.setPhoneNumber(input);
+            tmp.setPhoneNumber(tmpContact);
             std::cout << "Darkest Secret: ";
-            std::getline(std::cin, input);
+            std::getline(std::cin, tmpContact);
             if (std::cin.eof())
             {
+                tmpContact.clear();
+                std::cin.clear();
                 return printGoodbye();
             }
-            tmp.setDarkestSecret(input);
+            tmp.setDarkestSecret(tmpContact);
             addContact(tmp);
             std::cout << "\033[1;32mContact added successfully!\033[0m" << std::endl;
         }
         else if (input == "SEARCH") {
             int total = getNbContact() > 8 ? 8 : getNbContact();
             if (total == 0) {
+                input.clear();
+                std::cin.clear();
                 std::cout << "\033[1;31mNo contacts found.\033[0m" << std::endl;
                 continue;
             }
@@ -99,29 +118,41 @@ void PhoneBook::start() {
                 << std::endl;
             }
             std::cout << "\n\033[1;33mEnter the index of the contact to view details:\033[0m ";
-            int index;
-            std::cin >> index;
-            if (std::cin.fail()) {
+            std::string indexInput;
+            std::getline(std::cin, indexInput);
+
+            if (std::cin.eof()) {
+                input.clear();
                 std::cin.clear();
+                return printGoodbye();
+            }
+
+            if (indexInput.empty()) {
+                std::cout << "\033[1;31mInput cannot be empty. Try again.\033[0m" << std::endl;
+            }
+            else if (indexInput.find_first_not_of("0123456789") != std::string::npos) {
                 std::cout << "\033[1;31mInvalid input. Not a number.\033[0m" << std::endl;
             }
-            else if (index < 0 || index >= total) {
-                std::cout << "\033[1;31mIndex out of range. Try again.\033[0m" << std::endl;
-            }
             else {
-                std::cin.ignore();
-                const Contact& c = _contact[index];
-                std::cout << "\033[1;36m========== Contact Details ==========\033[0m\n";
-                std::cout << "First Name     : " << c.getFirstName() << std::endl;
-                std::cout << "Last Name      : " << c.getLastName() << std::endl;
-                std::cout << "Nick Name      : " << c.getNickName() << std::endl;
-                std::cout << "Phone Number   : " << c.getPhoneNumber() << std::endl;
-                std::cout << "Darkest Secret : " << c.getDarkestSecret() << std::endl;
-                std::cout << "\033[1;36m=====================================\033[0m" << std::endl;
+                int index = std::atoi(indexInput.c_str());
+                if (index < 0 || index >= total) {
+                    std::cout << "\033[1;31mIndex out of range. Try again.\033[0m" << std::endl;
+                }
+                else {
+                    const Contact& c = _contact[index];
+                    std::cout << "\033[1;36m========== Contact Details ==========\033[0m\n";
+                    std::cout << "First Name     : " << c.getFirstName() << std::endl;
+                    std::cout << "Last Name      : " << c.getLastName() << std::endl;
+                    std::cout << "Nick Name      : " << c.getNickName() << std::endl;
+                    std::cout << "Phone Number   : " << c.getPhoneNumber() << std::endl;
+                    std::cout << "Darkest Secret : " << c.getDarkestSecret() << std::endl;
+                    std::cout << "\033[1;36m=====================================\033[0m" << std::endl;
+                }
             }
         }
-
         else if (input == "EXIT") {
+            input.clear();
+            std::cin.clear();
             printGoodbye();
             break;
         }

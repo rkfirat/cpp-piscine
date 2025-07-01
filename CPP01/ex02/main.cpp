@@ -6,13 +6,15 @@ int main(void)
     std::string* stringPTR = &lorem;
     std::string& stringREF = lorem;
 
-    std::cout << "The memory address of the variable: " << &lorem << std::endl;
-    std::cout << "The memory address held by stringPTR: " << stringPTR << std::endl;
-    std::cout << "The memory address held by stringREF: " << &stringREF << std::endl;
-    
-    std::cout << "The value of the variable: " << lorem << std::endl;
-    std::cout << "The value pointed to by stringPTR: " << *stringPTR << std::endl;
-    std::cout << "The value pointed to by stringREF: " << stringREF << std::endl;
-    
+    std::cout << "\033[1;36m📍 Memory Addresses:\033[0m\n";
+    std::cout << "  🧠  &lorem      : \033[1;33m" << &lorem << "\033[0m\n";
+    std::cout << "  🔗  stringPTR   : \033[1;33m" << stringPTR << "\033[0m\n";
+    std::cout << "  🪞  &stringREF   : \033[1;33m" << &stringREF << "\033[0m\n";
+
+    std::cout << "\n\033[1;32m📦 Stored Values:\033[0m\n";
+    std::cout << "  🧠  lorem       : \033[1;37m" << lorem << "\033[0m\n";
+    std::cout << "  🔗  *stringPTR  : \033[1;37m" << *stringPTR << "\033[0m\n";
+    std::cout << "  🪞   stringREF   : \033[1;37m" << stringREF << "\033[0m\n";
+
     return 0;
 }
