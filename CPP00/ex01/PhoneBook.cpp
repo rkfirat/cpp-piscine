@@ -33,6 +33,11 @@ void PhoneBook::start() {
         std::cin.clear();
         std::cout << "\n\033[1;33mWhat do you want:\033[0m ";
         std::getline(std::cin, input);
+        if (std::cin.eof())
+        {
+            printGoodbye();
+            break;
+        }
         input = strToUpper(input);
 
         if (input.empty())
@@ -50,6 +55,12 @@ void PhoneBook::start() {
 
             std::cout << "First Name: ";
             std::getline(std::cin, tmpContact);
+            if (tmpContact.empty())
+            {
+                std::cout << "\033[1;31mContact's info cannot be empty\033[0m" << std::endl;
+                tmpContact.clear();
+                continue;
+            }
             if (std::cin.eof())
             {
                 tmpContact.clear();
@@ -59,6 +70,12 @@ void PhoneBook::start() {
             tmp.setFirstName(tmpContact);
             std::cout << "Last Name: ";
             std::getline(std::cin, tmpContact);
+            if (tmpContact.empty())
+            {
+                std::cout << "\033[1;31mContact's info cannot be empty\033[0m" << std::endl;
+                tmpContact.clear();
+                continue;
+            }
             if (std::cin.eof())
             {
                 tmpContact.clear();
@@ -68,6 +85,12 @@ void PhoneBook::start() {
             tmp.setLastName(tmpContact);
             std::cout << "Nick Name: ";
             std::getline(std::cin, tmpContact);
+            if (tmpContact.empty())
+            {
+                std::cout << "\033[1;31mContact's info cannot be empty\033[0m" << std::endl;
+                tmpContact.clear();
+                continue;
+            }
             if (std::cin.eof())
             {
                 tmpContact.clear();
@@ -77,6 +100,12 @@ void PhoneBook::start() {
             tmp.setNickName(tmpContact);
             std::cout << "Phone Number: ";
             std::getline(std::cin, tmpContact);
+            if (tmpContact.empty())
+            {
+                std::cout << "\033[1;31mContact's info cannot be empty\033[0m" << std::endl;
+                tmpContact.clear();
+                continue;
+            }
             if (std::cin.eof())
             {
                 tmpContact.clear();
@@ -86,6 +115,12 @@ void PhoneBook::start() {
             tmp.setPhoneNumber(tmpContact);
             std::cout << "Darkest Secret: ";
             std::getline(std::cin, tmpContact);
+            if (tmpContact.empty())
+            {
+                std::cout << "\033[1;31mContact's info cannot be empty\033[0m" << std::endl;
+                tmpContact.clear();
+                continue;
+            }
             if (std::cin.eof())
             {
                 tmpContact.clear();
@@ -128,7 +163,7 @@ void PhoneBook::start() {
             }
 
             if (indexInput.empty()) {
-                std::cout << "\033[1;31mInput cannot be empty. Try again.\033[0m" << std::endl;
+                std::cout << "\033[1;31mInput cannot be empty\033[0m. Try again.\033[0m" << std::endl;
             }
             else if (indexInput.find_first_not_of("0123456789") != std::string::npos) {
                 std::cout << "\033[1;31mInvalid input. Not a number.\033[0m" << std::endl;

@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
     }
     else {
-        for (int i = 1; i < argc; i++)
+        for (int i = 1; argv[i]; i++)
         {
             for (int j = 0; argv[i][j]; j++)
             {
