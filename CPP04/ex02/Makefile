@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = ex02
 
-SRCS = Animal.cpp  Cat.cpp  Dog.cpp  Brain.cpp  main.cpp
+SRCS = Animal.cpp Cat.cpp Dog.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
