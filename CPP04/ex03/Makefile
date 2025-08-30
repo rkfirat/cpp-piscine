@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = ex03
 
-SRCS = AMateria.cpp  Character.cpp  Cure.cpp  Ice.cpp  main.cpp  MateriaSource.cpp
+SRCS = Character.cpp AMateria.cpp Cure.cpp  Ice.cpp  main.cpp  MateriaSource.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -11,8 +11,10 @@ int main()
     ICharacter *me = new Character("me");
     AMateria *tmp;
     tmp = src->createMateria("ice");
+    std::cout << "Created materia type: " << (tmp ? tmp->getType() : "null") << std::endl;
     me->equip(tmp);
     tmp = src->createMateria("cure");
+    std::cout << "Created materia type: " << (tmp ? tmp->getType() : "null") << std::endl;
     me->equip(tmp);
     ICharacter *bob = new Character("bob");
     me->use(0, *bob);
