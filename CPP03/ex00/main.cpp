@@ -8,7 +8,7 @@ int main() {
 
     std::cout << std::endl << "\033[1;33m🔥 Round 1: Jack attacks Bob\033[0m" << std::endl;
     jack.attack("Bob");
-    bob.takeDamage(3);
+    bob.takeDamage(10);
 
     std::cout << std::endl << "\033[1;33m🛠️  Round 2: Bob repairs himself\033[0m" << std::endl;
     bob.beRepaired(5);

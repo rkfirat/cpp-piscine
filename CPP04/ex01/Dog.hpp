@@ -16,3 +16,5 @@ public:
     void makeSound() const;
     std::string getType() const;
 };
+
+#endif
