@@ -7,15 +7,29 @@ Form::Form() : name("Unnamed"), isSigned(false), execGrade(150), signGrade(150)
 
 Form::Form(std::string name, int execGrade, int signGrade) : name(name),  isSigned(false), execGrade(execGrade), signGrade(signGrade)
 {
-
+    if (execGrade > 150)
+    {
+        throw Form::GradeTooLowException();
+    }
+    if (execGrade < 1)
+    {
+        throw Form::GradeTooHighException();
+    }
+    if (signGrade > 150)
+    {
+        throw Form::GradeTooLowException();
+    }
+    if (signGrade < 1)
+    {
+        throw Form::GradeTooHighException();
+    }
 }
 
-Form::Form(const Form &other)
+Form::Form(const Form &other) : name(other.name)
 {
     this->isSigned = other.isSigned;
     this->execGrade = other.execGrade;
     this->signGrade = other.signGrade;
-    this->name = other.name;
 }
 
 Form &Form::operator=(const Form &other)
@@ -96,6 +110,6 @@ const char *Form::GradeTooLowException::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, const Form& form)
 {
-    out << form.getName() << ", bureaucrat grade " << form.getSigned() << ".";
+    out << form.getName() << ", form grade " << (form.getSigned() ? "signed" : "not signed") << ".";
     return out;
 }
