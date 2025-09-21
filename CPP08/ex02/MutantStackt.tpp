@@ -49,3 +49,27 @@ typename MutantStack<T>::container_type::const_iterator MutantStack<T>::end() co
 {
     return this->c.end();
 }
+
+template <typename T>
+typename MutantStack<T>::container_type::reverse_iterator MutantStack<T>::rbegin()
+{
+    return this->c.rbegin();
+}
+
+template <typename T>
+typename MutantStack<T>::container_type::reverse_iterator MutantStack<T>::rend()
+{
+    return this->c.rend();
+}
+
+template <typename T>
+typename MutantStack<T>::container_type::const_reverse_iterator MutantStack<T>::rbegin() const
+{
+    return this->c.rbegin();
+}
+
+template <typename T>
+typename MutantStack<T>::container_type::const_reverse_iterator MutantStack<T>::rend() const
+{
+    return this->c.rend();
+}
