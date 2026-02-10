@@ -33,34 +33,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 }
 
-
-void ShrubberyCreationForm::beSigned(Bureaucrat &bureaucrat)
-{
-    if (bureaucrat.getGrade() <= this->getSignGrade())
-    {
-        if (!isSigned)
-        {
-            isSigned = true;
-            std::cout << bureaucrat.getName()
-                      << " abi formu imzaladı, artık resmi olarak tamam!"
-                      << std::endl;
-        }
-        else
-        {
-            std::cout << bureaucrat.getName()
-                      << " abi formu zaten imzalamış, tekrar deneme ha 😏"
-                      << std::endl;
-        }
-    }
-    else
-    {
-        std::cout << bureaucrat.getName()
-                  << " abi grade’in yetmedi, formu imzalayamazsın 😅"
-                  << std::endl;
-        throw GradeTooLowException();
-    }
-}
-
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
     if (!this->isSigned)

@@ -4,7 +4,7 @@
 int main(void)
 {
     Intern someRandomIntern;
-    AForm* rrf;
+    AForm* rrf = NULL;
     AForm* invalidForm;
 
     std::cout << "--- Başarılı Form Oluşturma Testi ---" << std::endl;
@@ -13,15 +13,19 @@ int main(void)
         rrf = someRandomIntern.makeForm("robotomy request", "Bender");
         if (rrf)
         {
-            Bureaucrat boss("Patron", 1);
+            Bureaucrat boss("Patron", 140);
             boss.signForm(*rrf);
             boss.executeForm(*rrf);
             delete rrf;
+            rrf = NULL;
         }
     }
     catch(const std::exception& e)
     {
         std::cerr << "Hata: " << e.what() << '\n';
+        if (rrf)
+            delete rrf;
+        rrf = NULL;
     }
 
     std::cout << "\n--- Hatalı Form Oluşturma Testi ---" << std::endl;

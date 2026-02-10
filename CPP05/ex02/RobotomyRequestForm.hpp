@@ -14,5 +14,4 @@ public:
     ~RobotomyRequestForm();
 
     void execute(Bureaucrat const & executor) const;
-    void beSigned(Bureaucrat &bureaucrat);
 };

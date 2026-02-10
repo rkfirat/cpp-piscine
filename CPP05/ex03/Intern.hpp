@@ -6,6 +6,9 @@ class AForm;
 class Intern
 {
 private:
+    AForm *makeShrubbery(const std::string target);
+    AForm *makeRobotomy(const std::string target);
+    AForm *makePresidential(const std::string target);
 public:
     Intern();
     Intern(const Intern &other);

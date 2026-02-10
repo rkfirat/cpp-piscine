@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat() : name("Unnamed"), grade(150)
 
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
     if (grade > 150)
     {
@@ -16,15 +16,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
         throw Bureaucrat::GradeTooHighException();
     }
     this->grade = grade;
-    this->name = name;
 }
 
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name)
 {
-
-        this->name = other.name;
-        this->grade = other.grade;
+    this->grade = other.grade;
 
 }
 
@@ -32,7 +29,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
     if (this != &other)
     {
-        this->name = other.name;
         this->grade = other.grade;
     }
     return *this;

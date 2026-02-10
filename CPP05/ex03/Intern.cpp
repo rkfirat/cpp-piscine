@@ -24,24 +24,52 @@ Intern::~Intern()
 
 }
 
+AForm *Intern::makeShrubbery(const std::string target)
+{
+    return new ShrubberyCreationForm(target);
+}
+AForm *Intern::makeRobotomy(const std::string target)
+{
+    return new RobotomyRequestForm(target);
+}
+AForm *Intern::makePresidential(const std::string target)
+{
+    return new PresidentialPardonForm(target);
+}
+
 AForm* Intern::makeForm(std::string const & form_name, std::string const & target)
 {
     AForm* newForm = NULL;
 
-    if (form_name == "shrubbery creation")
-        newForm = new ShrubberyCreationForm(target);
-    else if (form_name == "robotomy request")
-        newForm = new RobotomyRequestForm(target);
-    else if (form_name == "presidential pardon")
-        newForm = new PresidentialPardonForm(target);
+    std::string levels[] = {"shrubbery creation", "robotomy request", "presidental pardon"};
+    int id = -1;
 
-    if (newForm)
+    for (int i = 0; i < 3; ++i)
     {
-        std::cout << "Intern creates " << form_name << std::endl;
-        return newForm;
+        if (levels[i] == form_name)
+        {
+            id = i;
+            break;
+        }
     }
-    
-    throw Intern::FormNotFoundException();
+
+    switch (id)
+    {
+    case 0:
+        newForm = makeShrubbery(target);
+        break;
+    case 1:
+        newForm = makeRobotomy(target);
+        break;
+    case 2:
+        newForm = makePresidential(target);
+        break;
+    default:
+        throw Intern::FormNotFoundException();
+        break;
+    }
+    std::cout << "Intern creates " << form_name << std::endl;
+    return newForm; 
 }
 
 const char *Intern::FormNotFoundException::what() const throw()
