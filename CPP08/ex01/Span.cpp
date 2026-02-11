@@ -38,8 +38,6 @@ void Span::addNumber(int number)
     {
         throw std::runtime_error("span is full");
     }
-    if (std::find(numbers.begin(), numbers.end(), number) != numbers.end())
-        throw std::runtime_error("This number already exists in the Span.");
     this->numbers.push_back(number);
 }
 

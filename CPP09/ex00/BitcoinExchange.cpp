@@ -53,15 +53,10 @@ int BitcoinExchange::parseDate(const std::string &date_str)
 
     if (seconds == -1)
     {
-        throw std::invalid_argument("Error: bad date value => " + date_str);
+        throw std::invalid_argument("bad input => " + date_str);
     }
 
     seconds /= 86400;
-
-    if (seconds < 14256)
-    {
-        throw std::invalid_argument("Error: date is too old => " + date_str);
-    }
 
     return (static_cast<int>(seconds));
 }
@@ -71,7 +66,7 @@ void BitcoinExchange::loadData(const std::string &data_file)
     std::ifstream file(data_file.c_str());
     if (!file.is_open())
     {
-        throw std::runtime_error("Could not open data file.");
+        throw std::runtime_error("could not open data file.");
     }
     std::string line;
     std::getline(file, line);

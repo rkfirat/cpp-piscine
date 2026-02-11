@@ -6,14 +6,14 @@ int main(int argc, char const *argv[])
     {
         if (argc != 2)
         {
-            throw std::runtime_error("Could not open input file.");
+            throw std::runtime_error("could not open file.");
             return 1;
         }
         BitcoinExchange btc("data.csv");
         std::ifstream input(argv[1]);
         if (!input.is_open())
         {
-            throw std::runtime_error("Could not open input file.");
+            throw std::runtime_error("could not open file.");
         }
         std::string line;
         std::getline(input, line);
