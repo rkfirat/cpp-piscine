@@ -6,7 +6,6 @@ NAME = PmergeMe
 
 SRCS = main.cpp PmergeMe.cpp
 
-
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -18,6 +17,6 @@ clean:
 	rm -rf $(OBJS)
 
 fclean: clean
-		rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all

@@ -1,19 +1,32 @@
-#pragma once
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
 
-#include <stack>
 #include <iostream>
 #include <vector>
+#include <deque>
+#include <sys/time.h>
 #include <sstream>
+#include <iomanip>
+
 
 class PmergeMe
 {
-public:
-    PmergeMe();
-    ~PmergeMe(void);
-    PmergeMe(const PmergeMe &other);
-    PmergeMe &operator=(const PmergeMe &other);
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe &src);
+		~PmergeMe();
+		PmergeMe &operator=(const PmergeMe &rhs);
 
+		void run(int argc, char **argv);
 
-private:
+	private:
+		void fordJohnsonVector(std::vector<int> &arr);
+		void fordJohnsonDeque(std::deque<int> &arr);
 
+		double getTime(struct timeval &start, struct timeval &end);
+
+		template <typename Container>
+		void printContainer(const Container &c, const std::string &label);
 };
+
+#endif
